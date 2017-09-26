@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 229144731}
   - component: {fileID: 229144730}
   - component: {fileID: 229144729}
+  - component: {fileID: 229144732}
   m_Layer: 5
   m_Name: ButtonJump
   m_TagString: Untagged
@@ -252,8 +253,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -306,6 +307,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 229144727}
+--- !u!114 &229144732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 229144727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2eb28c4881b8a449ac5835a0f81829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &610789242 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1157282958083658, guid: 4347be2e1c613aa4fb9cf25ff08ed846,
+    type: 2}
+  m_PrefabInternal: {fileID: 761829587}
+--- !u!114 &610789248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 610789242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c56e98e6fd05e44bdfa6767148e3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &761829587
 Prefab:
   m_ObjectHideFlags: 0
