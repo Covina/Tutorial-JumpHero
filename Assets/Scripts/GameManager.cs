@@ -70,8 +70,8 @@ public class GameManager : MonoBehaviour {
         // Spawn the platform
         Instantiate(platform, temp, Quaternion.identity);
 
-        // Generate location for player, move Y coord up 2 units
-        temp.y += 2f;
+        // Generate location for player, move Y coord up 3 units
+        temp.y += 3f;
 
         // Spawn player on top of this starting platform
         Instantiate(player, temp, Quaternion.identity);
