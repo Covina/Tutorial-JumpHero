@@ -72,7 +72,7 @@ public class PlayerJumpScript : MonoBehaviour {
         // Check if setPower is TRUE
         if (setPower)
         {
-            Debug.Log("We are setting the power");
+            //Debug.Log("We are setting the power");
 
             // set the power values
             forceX += thresholdX * Time.deltaTime;
@@ -84,11 +84,24 @@ public class PlayerJumpScript : MonoBehaviour {
                 forceX = 6.5f;
             }
 
+            if (forceX <= 2f)
+            {
+                forceX = 2f;
+            }
+
+
             // Cap the ForceY
             if (forceY >= 13.5f)
             {
                 forceY = 13.5f;
             }
+
+            if (forceY <= 4f)
+            {
+                forceY = 4f;
+            }
+
+
         }
 
     }
@@ -109,15 +122,19 @@ public class PlayerJumpScript : MonoBehaviour {
     // Jump function
     private void Jump()
     {
-        // make the player jump
-        myBody.velocity = new Vector2(forceX, forceY);
 
-        // reset the force values to zero
-        forceX = forceY = 0f;
+        // check to make sure player isn't already jumping
+        if(!didJump) {
 
-        // set didJump status
-        didJump = true;
+            // make the player jump
+            myBody.velocity = new Vector2(forceX, forceY);
 
+            // reset the force values to zero
+            forceX = forceY = 0f;
+
+            // set didJump status
+            didJump = true;
+        }
 
     }
 
@@ -142,12 +159,29 @@ public class PlayerJumpScript : MonoBehaviour {
                     GameManager.instance.CreateNewPlatformAndLerp(target.transform.position.x);
 
                 }
-                
+
+                // Add to player score
+                if(ScoreManager.instance != null)
+                {
+                    ScoreManager.instance.IncrementScore();
+                }
 
 
             }
 
         }
+
+        // Player has passed through a DeathZone
+        if (target.tag == "DeathZone")
+        {
+
+            // Destroy player object
+            DestroyObject(gameObject);
+
+            // End the game   
+            GameOverManager.instance.GameOverShowPanel();
+        }
+
     }
 
 

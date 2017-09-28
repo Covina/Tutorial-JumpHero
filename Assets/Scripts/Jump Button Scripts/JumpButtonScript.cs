@@ -8,7 +8,7 @@ public class JumpButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public void OnPointerDown(PointerEventData data)
     {
         // debug
-        Debug.Log("We are touching the button");
+        //Debug.Log("We are touching the button");
 
         // When we press, set the SetPower
         if (PlayerJumpScript.instance != null)
@@ -21,7 +21,7 @@ public class JumpButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public void OnPointerUp(PointerEventData data)
     {
         // debug
-        Debug.Log("We have released the button");
+        //Debug.Log("We have released the button");
 
         // When we release, unset the SetPower
         if (PlayerJumpScript.instance != null)
