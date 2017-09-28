@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerJumpScript : MonoBehaviour {
 
@@ -19,6 +20,15 @@ public class PlayerJumpScript : MonoBehaviour {
 
     private bool setPower;
     private bool didJump;
+
+    // Gameobject for the powerbar slider
+    private Slider powerBar;
+    
+    // how high the power can go
+    private float powerBarThreshold = 10f;
+
+    // the current value of the bar
+    private float powerBarValue = 0f;
 
 
     void Awake()
@@ -52,6 +62,14 @@ public class PlayerJumpScript : MonoBehaviour {
         // get the Animator on the Player game object
         anim = GetComponent<Animator>();
 
+        // Get the power bar game object
+        powerBar = GameObject.Find("PowerBar").GetComponent<Slider>();
+
+        // Set its starting values
+        powerBar.minValue = 0f;
+        powerBar.maxValue = 10f;
+        powerBar.value = powerBarValue;
+
     }
 
 
@@ -79,6 +97,7 @@ public class PlayerJumpScript : MonoBehaviour {
             forceY += thresholdY * Time.deltaTime;
 
             // Cap the ForceX
+            /*
             if (forceX >= 6.5f)
             {
                 forceX = 6.5f;
@@ -88,6 +107,7 @@ public class PlayerJumpScript : MonoBehaviour {
             {
                 forceX = 2f;
             }
+            */
 
 
             // Cap the ForceY
@@ -100,6 +120,12 @@ public class PlayerJumpScript : MonoBehaviour {
             {
                 forceY = 4f;
             }
+
+            // Get the current power bar value
+            powerBarValue += powerBarThreshold * Time.deltaTime;
+
+            // Update the slider visual
+            powerBar.value = powerBarValue;
 
 
         }
@@ -134,6 +160,14 @@ public class PlayerJumpScript : MonoBehaviour {
 
             // set didJump status
             didJump = true;
+
+            powerBarValue = 0f;
+            powerBar.value = powerBarValue;
+
+            // Set the bool so the Player jump animation plays
+            anim.SetBool("isJumping", didJump);
+
+            
         }
 
     }
@@ -150,6 +184,8 @@ public class PlayerJumpScript : MonoBehaviour {
             // Check to see if player landed on the platform
             if (target.tag == "Platform")
             {
+
+                anim.SetBool("isJumping", didJump);
 
                 Debug.Log("Player collided with the platform");
 
