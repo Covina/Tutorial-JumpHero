@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerJumpScript : MonoBehaviour {
 
+    // TODO: Add indicator of power required 
+    // TODO: Prevent scoring and spawning of new platforms when jumping on same platform
+
+
     public static PlayerJumpScript instance;
 
     // Player RigidBody2D (At the feet)
@@ -96,7 +100,8 @@ public class PlayerJumpScript : MonoBehaviour {
             forceX += thresholdX * Time.deltaTime;
             forceY += thresholdY * Time.deltaTime;
 
-            // Cap the ForceX
+
+
             /*
             if (forceX >= 6.5f)
             {
